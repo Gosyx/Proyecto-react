@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CartWidget from "../CartWidget";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -11,7 +12,7 @@ export default class NavbarComp extends Component {
       <div>
         <Navbar bg="light" expand="lg">
           <Container fluid>
-            <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+            <Navbar.Brand href="#">Hanasiart</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
@@ -30,8 +31,8 @@ export default class NavbarComp extends Component {
                     Informacion
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="#" disabled>
-                  Link
+                <Nav.Link href="#">
+                  <CartWidget />
                 </Nav.Link>
               </Nav>
               <Form className="d-flex">
