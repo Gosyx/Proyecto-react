@@ -1,4 +1,3 @@
-import ItemCount from "../ItemCount";
 import ItemList from "../ItemList";
 import React, { useEffect, useState } from "react";
 import Title from "../Title";
@@ -32,13 +31,11 @@ export const ItemListContainer = ({ texto }) => {
     });
     getData.then((res) => setData(res));
   }, []);
-  const onAdd = (quantity) => {
-    console.log(`Compraste ${quantity} unidades`);
-  };
+
   return (
     <>
       <Title greeting={texto} />
-      <ItemCount initial={1} stock={5} onAdd={onAdd} />
+
       <ItemList data={data} />
     </>
   );

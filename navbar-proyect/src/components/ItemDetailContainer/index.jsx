@@ -6,6 +6,7 @@ const film = {
   image: "https://gosyx.github.io/hanasitart.github.io/img/emotes/zorro.png",
   title: "Emotes",
 };
+
 export const ItemDetailContainer = () => {
   const [data, setData] = useState({});
 
