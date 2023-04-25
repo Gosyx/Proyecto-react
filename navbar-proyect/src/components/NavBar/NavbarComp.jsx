@@ -6,13 +6,16 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
 export default class NavbarComp extends Component {
   render() {
     return (
       <div>
-        <Navbar bg="light" expand="lg">
+        <Navbar className="navBg" bg="light" expand="lg">
           <Container fluid>
-            <Navbar.Brand href="#">Hanasiart</Navbar.Brand>
+            <Navbar.Brand as={Link} to="#">
+              Hanasiart
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
@@ -20,18 +23,24 @@ export default class NavbarComp extends Component {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link href="./pages/Inicio.js">Inicio</Nav.Link>
-                <Nav.Link href="./pages/Emotes.js">Emotes</Nav.Link>
-                <Nav.Link href="./pages/Paneles.js">Paneles</Nav.Link>
+                <Nav.Link as={Link} to="/">
+                  Inicio
+                </Nav.Link>
+                <Nav.Link as={Link} to="/categoria/Emotes">
+                  Emotes
+                </Nav.Link>
+                <Nav.Link as={Link} to="/categoria/Paneles">
+                  Paneles
+                </Nav.Link>
                 <NavDropdown title="Contactos" id="navbarScrollingDropdown">
-                  <NavDropdown.Item href="./pages/Contacto.js">
+                  <NavDropdown.Item as={Link} to="/Contacto">
                     Contacto
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="./pages/Informacion.js">
+                  <NavDropdown.Item as={Link} to="/Informacion">
                     Informacion
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="#">
+                <Nav.Link to="Cart">
                   <CartWidget />
                 </Nav.Link>
               </Nav>
