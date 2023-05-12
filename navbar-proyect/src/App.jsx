@@ -11,22 +11,33 @@ import Emotes from "./components/pages/Emotes";
 import Informacion from "./components/pages/Informacion";
 import Inicio from "./components/pages/Inicio";
 import Paneles from "./components/pages/Paneles";
+import CartProvider from "./context/CartContext";
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavbarComp />
-        <Routes>
-          <Route path="/" element={<ItemListContainer />} />
-          <Route
-            path="/categoria/:categoriaId"
-            element={<ItemListContainer />}
-          />
-          <Route path="/detalle" element={<ItemDetailContainer />} />
-          <Route path="Contact" element={<Contact />} />
-          <Route path="Informacion" element={<Informacion />} />
-          <Route path="Cart" element={<Cart />} />
-        </Routes>
+        <CartProvider>
+          <NavbarComp />
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route
+              path="/categoria/:categoriaId"
+              element={<ItemListContainer />}
+            />
+            <Route
+              path="/categoria/:categoriaId"
+              element={<ItemListContainer />}
+            />
+            <Route
+              path="/detalle/:detalleId"
+              element={<ItemDetailContainer />}
+            />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/informacion" element={<Informacion />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </CartProvider>
       </BrowserRouter>
     </div>
   );

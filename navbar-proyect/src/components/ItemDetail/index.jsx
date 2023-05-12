@@ -1,12 +1,17 @@
 import "./itemDetail.css";
-import ItemCount from "../ItemCount";
+
 import React, { useState } from "react";
+import { useCartContext } from "../../context/CartContext";
+import ItemCount from "../ItemCount";
+import { Link } from "react-router-dom";
 
 export const ItemDetail = ({ data }) => {
   const [goToCart, setGoToCart] = useState(false);
+  const { addProduct } = useCartContext();
 
   const onAdd = (quantity) => {
-    console.log(`Compraste ${quantity} unidades`);
+    setGoToCart(true);
+    addProduct(data, quantity);
   };
 
   return (
@@ -15,7 +20,11 @@ export const ItemDetail = ({ data }) => {
         <img className="detail__image" src={data.image} alt="" />
         <div className="content">
           <h1>{data.title}</h1>
-          <ItemCount initial={1} stock={5} onAdd={onAdd} />
+          {goToCart ? (
+            <Link to="/cart">Terminar compra</Link>
+          ) : (
+            <ItemCount initial={3} stock={5} onAdd={onAdd} />
+          )}
         </div>
       </div>
     </div>

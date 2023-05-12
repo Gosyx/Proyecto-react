@@ -40,7 +40,7 @@ export default class NavbarComp extends Component {
                     Informacion
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link to="Cart">
+                <Nav.Link as={Link} to="cart">
                   <CartWidget />
                 </Nav.Link>
               </Nav>
