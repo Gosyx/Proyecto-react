@@ -32,15 +32,11 @@ export default class NavbarComp extends Component {
                 <Nav.Link as={Link} to="/categoria/Paneles">
                   Paneles
                 </Nav.Link>
-                <NavDropdown title="Contactos" id="navbarScrollingDropdown">
-                  <NavDropdown.Item as={Link} to="/Contacto">
-                    Contacto
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/Informacion">
-                    Informacion
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <Nav.Link as={Link} to="cart">
+                <Nav.Link as={Link} to="/categoria/Stickers">
+                  Stickers
+                </Nav.Link>
+
+                <Nav.Link as={Link} to="/cart">
                   <CartWidget />
                 </Nav.Link>
               </Nav>

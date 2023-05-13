@@ -1,6 +1,7 @@
 import React from "react";
-import { useCartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
+import ItemCart from "../ItemCart";
 
 const Cart = () => {
   const { cart, totalPrice } = useCartContext();
@@ -13,6 +14,13 @@ const Cart = () => {
       </>
     );
   }
-  return <div>Cart</div>;
+  return (
+    <>
+      {cart.map((product) => (
+        <ItemCart key={product.id} product={product} />
+      ))}
+      <p>total: {totalPrice() || ""}</p>
+    </>
+  );
 };
-export default Cart;
+export default CartWidget;
