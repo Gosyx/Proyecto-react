@@ -26,6 +26,9 @@ export default class NavbarComp extends Component {
                 <Nav.Link as={Link} to="/">
                   Inicio
                 </Nav.Link>
+                <Nav.Link as={Link} to="/categoria/Banners">
+                  Banners
+                </Nav.Link>
                 <Nav.Link as={Link} to="/categoria/Emotes">
                   Emotes
                 </Nav.Link>

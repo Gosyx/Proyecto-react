@@ -1,38 +1,14 @@
-import ItemList from "../ItemList";
 import React, { useEffect, useState } from "react";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
+import ItemList from "../ItemList";
 import Title from "../Title";
 import { useParams } from "react-router-dom";
-const pages = [
-  {
-    id: 1,
-    price: 2000,
-    image: "https://gosyx.github.io/hanasitart.github.io/img/kanemati.png",
-    category: "Stickers",
-    title: "Stickers",
-  },
-  {
-    id: 2,
-    price: 2000,
-    image: "https://gosyx.github.io/hanasitart.github.io/img/emotes/zorro.png",
-    category: "Emotes",
-    title: "Emotes",
-  },
-  {
-    id: 3,
-    price: 1500,
-    image:
-      "https://gosyx.github.io/hanasitart.github.io/img/panelespinguins.png",
-    category: "Paneles",
-    title: "Paneles",
-  },
-  {
-    id: 4,
-    price: 3000,
-    image: "https://gosyx.github.io/hanasitart.github.io/Banners/bannersin.png",
-    category: "Banners",
-    title: "Banners",
-  },
-];
 
 export const ItemListContainer = ({ texto }) => {
   const [data, setData] = useState([]);
@@ -40,17 +16,20 @@ export const ItemListContainer = ({ texto }) => {
   const { categoriaId } = useParams();
 
   useEffect(() => {
-    const getData = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(pages);
-      }, 1000);
-    });
+    const querydb = getFirestore();
+    const queryCollection = collection(querydb, "Items");
     if (categoriaId) {
-      getData.then((res) =>
-        setData(res.filter((pages) => pages.category === categoriaId))
+      const queryFilter = query(
+        queryCollection,
+        where("category", "==", categoriaId)
+      );
+      getDocs(queryFilter).then((res) =>
+        setData(res.docs.map((item) => ({ id: item.id, ...item.data() })))
       );
     } else {
-      getData.then((res) => setData(res));
+      getDocs(queryCollection).then((res) =>
+        setData(res.docs.map((item) => ({ id: item.id, ...item.data() })))
+      );
     }
   }, [categoriaId]);
 
