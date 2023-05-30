@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
@@ -6,13 +6,13 @@ import ItemCart from "../ItemCart";
 
 const Cart = () => {
   const { cart, totalPrice } = useCartContext();
+  const [nombreCliente, setNombreCliente] = useState("");
+  const fechaCompra = new Date();
 
   const order = {
     buyer: {
-      name: "Pablo",
-      email: "pablo@gmail.com",
-      phone: "123123",
-      address: "asdd",
+      name: nombreCliente,
+      purchaseDate: fechaCompra.toLocaleString(),
     },
     items: cart.map((product) => ({
       id: product.id,
@@ -38,6 +38,14 @@ const Cart = () => {
   }
   return (
     <>
+      <div>
+        <input
+          type="text"
+          value={nombreCliente}
+          onChange={(e) => setNombreCliente(e.target.value)}
+          placeholder="Nombre del cliente"
+        />
+      </div>
       {cart.map((product) => (
         <ItemCart key={product.id} product={product} />
       ))}
