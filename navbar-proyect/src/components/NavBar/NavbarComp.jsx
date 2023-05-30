@@ -5,7 +5,6 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 export default class NavbarComp extends Component {
   render() {
@@ -13,8 +12,8 @@ export default class NavbarComp extends Component {
       <div>
         <Navbar className="navBg" bg="light" expand="lg">
           <Container fluid>
-            <Navbar.Brand as={Link} to="#">
-              Hanasiart
+            <Navbar.Brand as={Link} to="/">
+              Hanasitart
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
@@ -50,7 +49,7 @@ export default class NavbarComp extends Component {
                   className="me-2"
                   aria-label="Buscar"
                 />
-                <Button variant="outline-success">Search</Button>
+                <Button variant="outline-success">🔍</Button>
               </Form>
             </Navbar.Collapse>
           </Container>
